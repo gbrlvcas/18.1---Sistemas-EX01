@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import codigo.Acao;
+import codigo.Produto;
 
 public class LanchoneteCadastrar {
 
@@ -86,6 +87,7 @@ public class LanchoneteCadastrar {
 				//Buscar método na classe Ação
 				a.CadastrarProduto(nomeProduto, valorProduto);
 				
+				
 				//Mostrar resultado do cadastro
 				txtMensagem.setText(a.mensagemErro);
 				txtMensagem.setVisible(true);
@@ -104,10 +106,12 @@ public class LanchoneteCadastrar {
 						
 						//Limpar os campos
 						txtProduto.setText("");
+						txtProduto.requestFocus();
 						txtValor.setText("");
 						txtMensagem.setVisible(false);
 						btnCadastrarNovo.setVisible(false);
 						btnCadastrar.setVisible(true);
+						
 						}
 					});
 

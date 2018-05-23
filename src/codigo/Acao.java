@@ -33,6 +33,17 @@ public class Acao {
 		
 		//Condicional - Resultado do Cadastro
 		if(codErro == 0) {
+			Produto p = new Produto();
+			
+			//Adicionando o nome do Produto digiado a classe Produto
+			p.setNomeProduto(nomeProduto);
+			p.setValorProduto(Double.parseDouble(valorProduto));
+			
+			//Adicionando ao ArrayList
+			Produto.dados.add(p);
+			
+			
+			
 			mensagemErro = "\n\n    Produto cadastrado\n           com Sucesso!";
 			
 		}else if(codErro == 1) {
@@ -41,10 +52,10 @@ public class Acao {
 			mensagemErro+="\n\n#Como resolver";
 			mensagemErro+="\nNão deixe nenhum\ncampo em branco";
 			
-		}else if(codErro == 2) {
+		}else if(codErro == 2) {	
 			mensagemErro = "#ERRO02";
 			mensagemErro+="\nCampo: Valor";
-			mensagemErro+="\n\n#Como resolver";
+			mensagemErro+="\n\nComo resolver";
 			mensagemErro+="\nDigite apenas números";
 			
 		}

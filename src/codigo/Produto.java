@@ -23,6 +23,11 @@ public class Produto {
 	}
 	
 	//Arraylist
-	ArrayList<Produto> dados = new ArrayList<>();
+	public static ArrayList<Produto> dados = new ArrayList<>();
+	
+	//Método para exibir apenas o nome
+	public String toString() {
+		return nomeProduto;
+	}
 	
 }

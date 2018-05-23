@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import codigo.Produto;
 
 public class LanchonetePedidos {
 
@@ -41,7 +46,9 @@ public class LanchonetePedidos {
 		JComboBox<String> comboPedido = new JComboBox<>();
 		comboPedido.setBounds(130, 75, 150, 25 );
 		comboPedido.setFont(new Font("Calibri", Font.PLAIN, 15));
-		comboPedido.addItem("Escolha seu pedido");
+		comboPedido.removeAllItems();
+		comboPedido.setModel(new DefaultComboBoxModel<>(new Vector(Produto.dados)));
+		
 		
 //Botões ================================================================================================================
 
