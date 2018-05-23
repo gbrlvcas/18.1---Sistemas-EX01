@@ -147,7 +147,7 @@ public class LanchonetePrincipal {
 		});
 		
 	
-//Componentes ===========================================================================================================
+//Adicionar os componentes ===========================================================================================================
 		
 		//Background
 		JLabel BGPrincipal = new JLabel(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\18.1 - Sistemas EX01\\src\\interfaceGrafica\\BGPrincipal.gif"));

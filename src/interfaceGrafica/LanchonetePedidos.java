@@ -7,8 +7,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class LanchonetePedidos {
 
@@ -19,8 +22,29 @@ public class LanchonetePedidos {
 		cxPedidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cxPedidos.setSize(480, 270);
 		cxPedidos.setLocationRelativeTo(null);
+
+//Componentes ==========================================================================================================
+		
+		//Descrição das caixas JText
+		JTextArea txtDescricao = new JTextArea("          Nome\n\n        Pedido\n\nQuantidade");
+		txtDescricao.setEditable(false);
+		txtDescricao.setBounds(20, 20, 100, 200);
+		txtDescricao.setOpaque(false);
+		txtDescricao.setFont(new Font("Calibri", Font.BOLD, 20));
+		
+		//Caixa [Nome]
+		JTextField txtNome = new JTextField();
+		txtNome.setBounds(130, 20, 150, 25 );
+		txtNome.setFont(new Font("Calibri", Font.PLAIN, 15));
+		
+		//Caixa [Pedido]
+		JComboBox<String> comboPedido = new JComboBox<>();
+		comboPedido.setBounds(130, 75, 150, 25 );
+		comboPedido.setFont(new Font("Calibri", Font.PLAIN, 15));
+		comboPedido.addItem("Escolha seu pedido");
 		
 //Botões ================================================================================================================
+
 		
 		//Sair
 		JButton btnSair = new JButton("Sair");
@@ -52,6 +76,13 @@ public class LanchonetePedidos {
 		BGPedidos.setBounds(0, 0, 480, 270);
 						
 		//Adicionando aos componentes
+		
+				//Descrição
+				cxPedidos.add(txtDescricao);
+				
+				//Caixas
+				cxPedidos.add(txtNome);
+				cxPedidos.add(comboPedido);
 				
 				//Botões
 				cxPedidos.add(btnSair);
