@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import javax.swing.ComboBoxModel;
+import javax.crypto.CipherInputStream;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,7 +15,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
+import codigo.Acao;
 import codigo.Produto;
 
 public class LanchonetePedidos {
@@ -36,6 +38,7 @@ public class LanchonetePedidos {
 		txtDescricao.setBounds(20, 20, 100, 200);
 		txtDescricao.setOpaque(false);
 		txtDescricao.setFont(new Font("Calibri", Font.BOLD, 20));
+		txtDescricao.setForeground(Color.RED);
 		
 		//Caixa [Nome]
 		JTextField txtNome = new JTextField();
@@ -50,8 +53,86 @@ public class LanchonetePedidos {
 		comboPedido.setModel(new DefaultComboBoxModel<>(new Vector(Produto.dados)));
 		
 		
+		//Caixa [Quantidade]
+		JTextField txtQuantidade = new JTextField();
+		txtQuantidade.setBounds(130, 125, 50, 25 );
+		txtQuantidade.setFont(new Font("Calibri", Font.PLAIN, 15));
+		txtQuantidade.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		//Resultado [Pedido]
+		JTextArea txtMensagem = new JTextArea("");
+		txtMensagem.setBounds(300, 25, 150, 125);
+		txtMensagem.setFont(new Font("Calibri", Font.BOLD, 15));
+		txtMensagem.setVisible(false);
+		
+		
+		//Instanciando a classe ação
+		Acao a = new Acao();
+		
+
 //Botões ================================================================================================================
 
+		//Novo Pedido
+		JButton btnPedidoNovo = new JButton("Novo Cadastro");
+		btnPedidoNovo.setBounds(50, 180, 190, 25);
+		btnPedidoNovo.setFont(new Font("Calibri", Font.BOLD, 16));
+		btnPedidoNovo.setBackground(Color.DARK_GRAY);
+		btnPedidoNovo.setForeground(Color.RED);
+		btnPedidoNovo.setVisible(false);
+		
+		
+		//Fazer pedido
+		JButton btnPedir = new JButton("Pedir");
+		btnPedir.setBounds(120, 180, 70, 25);
+		btnPedir.setFont(new Font("Calibri", Font.BOLD, 16));
+		btnPedir.setBackground(Color.DARK_GRAY);
+		btnPedir.setForeground(Color.RED);
+		
+		//Função [Pedir]
+		btnPedir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				//Capturar dados
+				String nomePedido = txtNome.getText();
+				String escolhidoPedido = comboPedido.getSelectedItem().toString();
+				String quantidadePedido = txtQuantidade.getText();
+				
+				//Buscar método na classe Ação
+				a.RegistrarPedido(nomePedido, escolhidoPedido, quantidadePedido);
+				
+				//Mostrar resultado do cadastro
+				txtMensagem.setText(a.mensagemErro);
+				txtMensagem.setVisible(true);
+				
+				if(a.codErro == 0) {
+				
+				//Trocando o botão de pedido
+				btnPedir.setVisible(false);
+				btnPedidoNovo.setVisible(true);
+				
+				//Função [Novo Pedido]
+				btnPedidoNovo.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						
+						//Limpar os campos
+						txtNome.setText("");
+						comboPedido.setSelectedIndex(-1);
+						txtQuantidade.setText("");
+						txtMensagem.setVisible(false);
+						btnPedidoNovo.setVisible(false);
+						btnPedir.setVisible(true);
+						
+					}
+				});
+					
+				}
+				
+			}
+		});
 		
 		//Sair
 		JButton btnSair = new JButton("Sair");
@@ -60,7 +141,7 @@ public class LanchonetePedidos {
 		btnSair.setBackground(Color.DARK_GRAY);
 		btnSair.setForeground(Color.RED);
 		
-		//Função[Sair]
+		//Função [Sair]
 		btnSair.addActionListener(new ActionListener() {
 			
 			@Override
@@ -90,8 +171,12 @@ public class LanchonetePedidos {
 				//Caixas
 				cxPedidos.add(txtNome);
 				cxPedidos.add(comboPedido);
+				cxPedidos.add(txtQuantidade);
+				cxPedidos.add(txtMensagem);
 				
 				//Botões
+				cxPedidos.add(btnPedidoNovo);
+				cxPedidos.add(btnPedir);
 				cxPedidos.add(btnSair);
 						
 				//Background

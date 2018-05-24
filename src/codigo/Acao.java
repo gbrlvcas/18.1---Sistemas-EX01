@@ -22,7 +22,7 @@ public class Acao {
 		}
 		
 		if(codErro == 0) {
-		//Caso cliente digite uma letra no lugar de número
+		//Caso cliente digite algo diferente de um número
 		try {
 		erro = Double.parseDouble(valorProduto);
 		}catch(Exception e) {
@@ -41,9 +41,7 @@ public class Acao {
 			
 			//Adicionando ao ArrayList
 			Produto.dados.add(p);
-			
-			
-			
+	
 			mensagemErro = "\n\n    Produto cadastrado\n           com Sucesso!";
 			
 		}else if(codErro == 1) {
@@ -59,7 +57,66 @@ public class Acao {
 			mensagemErro+="\nDigite apenas números";
 			
 		}
-		
+	}
+
 	
+	//Método para Validar e registrar pedido
+	public void RegistrarPedido(String nomePedido, String escolhidoPedido, String quantidadePedido) {
+		
+		//Setando as variaveis para nulo [Pois ja foram usados no método anterior]
+		codErro = 0;
+		mensagemErro = "";
+		
+		//Variaveis
+		int erro;
+		
+		//Caso cliente deixe o campo em branco
+		if(quantidadePedido.equals("")) {
+			codErro = 1;
+	
+		}
+		
+		
+		if(codErro == 0) {
+		//Caso cliente digite algo diferente de um número
+			try {
+				erro = Integer.parseInt(quantidadePedido);
+			}catch(Exception e) {
+				codErro = 2;
+			}
+			
+			//Condicional - Resultado do cadastro do pedido
+			if(codErro == 0) {
+				
+				//Istanciando a classe [Pedidos]
+				Pedidos pd = new Pedidos();
+				
+				//Atribuindo os nomes as variaveis da classe [Pedidos]
+				pd.setNomePedido(nomePedido);
+				pd.setEscolhidoPedido(escolhidoPedido);
+				pd.setQuantidadePedido(quantidadePedido);
+				
+				//Adicionando ao ArrayList
+				Pedidos.dados.add(pd);
+				
+				//Mensagem sobre o que ocorreu
+				mensagemErro = "\n\n    Produto cadastrado\n           com Sucesso!";
+				
+			}else if(codErro == 1) {
+				mensagemErro = "#ERRO01";
+				mensagemErro+="\nCampo: Quantidade";
+				mensagemErro+="\n\n#Como resolver";
+				mensagemErro+="\nNão deixe nenhum\ncampo em branco";
+				
+			}else if(codErro == 2) {	
+				mensagemErro = "#ERRO02";
+				mensagemErro+="\nCampo: Quantidade";
+				mensagemErro+="\n\nComo resolver";
+				mensagemErro+="\nDigite apenas números";
+		
+			}
+
+		}
 	}
 }
+

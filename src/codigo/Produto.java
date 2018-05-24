@@ -22,7 +22,7 @@ public class Produto {
 		this.valorProduto = valorProduto;
 	}
 	
-	//Arraylist
+	//ArrayList
 	public static ArrayList<Produto> dados = new ArrayList<>();
 	
 	//Método para exibir apenas o nome

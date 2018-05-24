@@ -33,6 +33,7 @@ public class LanchoneteCadastrar {
 		txtDescricao.setBounds(20, 20, 70, 100);
 		txtDescricao.setOpaque(false);
 		txtDescricao.setFont(new Font("Calibri", Font.BOLD, 20));
+		txtDescricao.setForeground(Color.RED);
 		
 		//Caixa [Produto]
 		JTextField txtProduto = new JTextField();
@@ -51,8 +52,7 @@ public class LanchoneteCadastrar {
 		txtMensagem.setVisible(false);
 
 		
-		
-		//Instanciando o construtor
+		//Instanciando a classe ação
 		Acao a = new Acao();
 		
 		
@@ -60,7 +60,7 @@ public class LanchoneteCadastrar {
 //Botões ================================================================================================================
 		
 		//Cadastrar Novamente
-		JButton btnCadastrarNovo = new JButton("Cadastrar Novamente");
+		JButton btnCadastrarNovo = new JButton("Novo Cadastro");
 		btnCadastrarNovo.setBounds(50, 120, 190, 25);
 		btnCadastrarNovo.setFont(new Font("Calibri", Font.BOLD, 16));
 		btnCadastrarNovo.setBackground(Color.DARK_GRAY);
