@@ -108,10 +108,27 @@ public class Acao {
 				//Istanciando a classe [Pedidos]
 				Pedidos pd = new Pedidos();
 				
+				//Capturando o valor do pedido escolhido
+				double valorPedidoEscolhido = 0;
+				
+					for(int indice = 0; indice <= Produto.dados.size(); indice++) {
+						
+						if(Produto.dados.get(indice).getNomeProduto().equals(escolhidoPedido)) {
+							
+							valorPedidoEscolhido = Produto.dados.get(indice).getValorProduto();
+							break;
+						}
+						
+					}
+				
+				//Somando o valor dos pedidos
+				double somaPedido = Double.parseDouble(quantidadePedido) * valorPedidoEscolhido;
+				
 				//Atribuindo os nomes as variaveis da classe [Pedidos]
 				pd.setNomePedido(nomePedido);
 				pd.setEscolhidoPedido(escolhidoPedido);
 				pd.setQuantidadePedido(quantidadePedido);
+				pd.setSomaPedido(somaPedido);
 				pd.setDataDias(dataDias);
 				pd.setDataTempo(dataTempo);
 				
@@ -148,6 +165,7 @@ public class Acao {
 		modelo.addColumn("Nome");
 		modelo.addColumn("Pedido");
 		modelo.addColumn("Quantidade");
+		modelo.addColumn("Valor");
 		modelo.addColumn("Horario");
 		modelo.addColumn("Data");
 		
@@ -157,6 +175,7 @@ public class Acao {
 						Pedidos.dados.get(indice).getNomePedido(),
 						Pedidos.dados.get(indice).getEscolhidoPedido(),
 						Pedidos.dados.get(indice).getQuantidadePedido(),
+						Pedidos.dados.get(indice).getSomaPedido(),
 						Pedidos.dados.get(indice).getDataTempo(),
 						Pedidos.dados.get(indice).getDataDias()
 						

@@ -1,6 +1,5 @@
 package codigo;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Pedidos {
@@ -13,6 +12,7 @@ public class Pedidos {
 	private String quantidadePedido;
 	private String dataDias;
 	private String dataTempo;
+	private double somaPedido;
 	
 
 
@@ -47,7 +47,18 @@ public class Pedidos {
 		public void setDataTempo(String dataTempo) {
 			this.dataTempo = dataTempo;
 		}
-		
+		public double getSomaPedido() {
+			return somaPedido;
+		}
+		public void setSomaPedido(double somaPedido) {
+			this.somaPedido = somaPedido;
+		}
+
+
+
+
+
+
 		//ArrayList
 		public static ArrayList<Pedidos> dados = new ArrayList<>();
 

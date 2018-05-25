@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -19,6 +20,17 @@ public class LanchoneteEstatisticas {
 		cxEstatisticas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cxEstatisticas.setSize(480, 270);
 		cxEstatisticas.setLocationRelativeTo(null);
+		
+//Componentes ===========================================================================================================
+		
+		JComboBox<String> comboFiltragem = new JComboBox<>();
+		comboFiltragem.setBounds(10, 10, 100, 30);
+		comboFiltragem.addItem("Filtrar por");
+		comboFiltragem.addItem("Nome");
+		comboFiltragem.addItem("Produto");
+		comboFiltragem.addItem("Quantidade");
+		comboFiltragem.addItem("Valor");
+		
 		
 //Botões ================================================================================================================
 		
@@ -52,9 +64,12 @@ public class LanchoneteEstatisticas {
 		BGEstatisticas.setBounds(0, 0, 480, 270);
 						
 		//Adicionando aos componentes
+		
+				//Componentes
+				cxEstatisticas.add(comboFiltragem);
 				
 				//Botões
-		cxEstatisticas.add(btnSair);
+				cxEstatisticas.add(btnSair);
 						
 				//Background
 				cxEstatisticas.add(BGEstatisticas);
