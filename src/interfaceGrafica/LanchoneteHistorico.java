@@ -4,11 +4,17 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import codigo.Acao;
 
 public class LanchoneteHistorico {
 
@@ -19,6 +25,55 @@ public class LanchoneteHistorico {
 		cxHistorico.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cxHistorico.setSize(480, 270);
 		cxHistorico.setLocationRelativeTo(null);
+		
+		//Instanciar objeto [Ação]
+		Acao a = new Acao();
+		
+		//Tabela de histórico dos pedidos
+		JTable dadosPedido = new JTable(a.ListarPedidos());
+		
+		
+		//Barra de rolagem - As dimensões da mesma irão afetar no tamanho do JTable
+		JScrollPane barra = new JScrollPane(dadosPedido);
+		barra.setBounds(0, 0, 460, 170);
+		
+//Bloquear edição da tabela =============================================================================================
+		
+		//Evento do mouse
+		dadosPedido.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
 		
 //Botões ================================================================================================================
 		
@@ -53,6 +108,9 @@ public class LanchoneteHistorico {
 						
 		//Adicionando aos componentes
 				
+				//Tabela
+				cxHistorico.add(barra);
+		
 				//Botões
 				cxHistorico.add(btnSair);
 						

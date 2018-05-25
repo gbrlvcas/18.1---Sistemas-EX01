@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import javax.crypto.CipherInputStream;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import codigo.Acao;
+import codigo.Pedidos;
 import codigo.Produto;
 
 public class LanchonetePedidos {
@@ -98,6 +98,11 @@ public class LanchonetePedidos {
 				String nomePedido = txtNome.getText();
 				String escolhidoPedido = comboPedido.getSelectedItem().toString();
 				String quantidadePedido = txtQuantidade.getText();
+				
+				Pedidos pd = new Pedidos();
+				
+				
+				
 				
 				//Buscar método na classe Ação
 				a.RegistrarPedido(nomePedido, escolhidoPedido, quantidadePedido);

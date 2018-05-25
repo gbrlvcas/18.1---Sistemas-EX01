@@ -1,6 +1,9 @@
 package codigo;
 
-import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.swing.table.DefaultTableModel;
 
 public class Acao {
 	
@@ -87,6 +90,20 @@ public class Acao {
 			
 			//Condicional - Resultado do cadastro do pedido
 			if(codErro == 0) {
+				//Instanciar o objeto [Tempo]
+				LocalDateTime tempo = LocalDateTime.now();
+				
+				//Variaveis para pegar o tempo
+				int dia = tempo.getDayOfMonth();
+				int mes = tempo.getMonthValue();
+				int ano = tempo.getYear();
+				int hora = tempo.getHour();
+				int minutos = tempo.getMinute();
+				int segundos = tempo.getSecond();
+				
+				//Concatenando os dados [Tempo]
+				String dataDias = dia+"/"+mes+"/"+ano;
+				String dataTempo = hora+":"+minutos+":"+segundos;
 				
 				//Istanciando a classe [Pedidos]
 				Pedidos pd = new Pedidos();
@@ -95,9 +112,12 @@ public class Acao {
 				pd.setNomePedido(nomePedido);
 				pd.setEscolhidoPedido(escolhidoPedido);
 				pd.setQuantidadePedido(quantidadePedido);
+				pd.setDataDias(dataDias);
+				pd.setDataTempo(dataTempo);
 				
 				//Adicionando ao ArrayList
 				Pedidos.dados.add(pd);
+			
 				
 				//Mensagem sobre o que ocorreu
 				mensagemErro = "\n\n    Produto cadastrado\n           com Sucesso!";
@@ -117,6 +137,36 @@ public class Acao {
 			}
 
 		}
+		
 	}
-}
+	
+	//Método para exibir o histórico de pedidos
+	public DefaultTableModel ListarPedidos() {
+		
+		//DefaultTableModel [Nomear as colunas]
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.addColumn("Nome");
+		modelo.addColumn("Pedido");
+		modelo.addColumn("Quantidade");
+		modelo.addColumn("Horario");
+		modelo.addColumn("Data");
+		
+			//Realizar o for int para adicionar todos os dados cadastrados
+			for (int indice = 0 ; indice < Produto.dados.size(); indice++) {
+				modelo.addRow(new Object[]  {
+						Pedidos.dados.get(indice).getNomePedido(),
+						Pedidos.dados.get(indice).getEscolhidoPedido(),
+						Pedidos.dados.get(indice).getQuantidadePedido(),
+						Pedidos.dados.get(indice).getDataTempo(),
+						Pedidos.dados.get(indice).getDataDias()
+						
+				});
+				
+				}
+			
+			//Retornar o modelo da JTable
+			return modelo;
+			}
+	}
+
 
