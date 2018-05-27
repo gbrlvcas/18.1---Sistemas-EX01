@@ -1,6 +1,6 @@
 package codigo;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 import javax.swing.table.DefaultTableModel;
@@ -10,6 +10,8 @@ public class Acao {
 	//Atributos
 	public String mensagemErro = "";
 	public int codErro;
+	public String filtragem;
+	public String filtrado;
 	
 	
 	//Método para Validar e Cadastrar
@@ -169,23 +171,74 @@ public class Acao {
 		modelo.addColumn("Horario");
 		modelo.addColumn("Data");
 		
-			//Realizar o for int para adicionar todos os dados cadastrados
-			for (int indice = 0 ; indice < Produto.dados.size(); indice++) {
-				modelo.addRow(new Object[]  {
-						Pedidos.dados.get(indice).getNomePedido(),
-						Pedidos.dados.get(indice).getEscolhidoPedido(),
-						Pedidos.dados.get(indice).getQuantidadePedido(),
-						Pedidos.dados.get(indice).getSomaPedido(),
-						Pedidos.dados.get(indice).getDataTempo(),
-						Pedidos.dados.get(indice).getDataDias()
-						
-				});
-				
-				}
+		//Realizar o for int para adicionar todos os dados cadastrados
+		for (int indice = 0 ; indice < Pedidos.dados.size(); indice++) {
+			modelo.addRow(new Object[]  {
+				Pedidos.dados.get(indice).getNomePedido(),
+				Pedidos.dados.get(indice).getEscolhidoPedido(),
+				Pedidos.dados.get(indice).getQuantidadePedido(),
+				Pedidos.dados.get(indice).getSomaPedido(),
+				Pedidos.dados.get(indice).getDataTempo(),
+				Pedidos.dados.get(indice).getDataDias()
+			});
 			
+			}
+		
 			//Retornar o modelo da JTable
 			return modelo;
 			}
+	
+	
+	
+	//Método para exibir a estatisticas dos pedidos
+	public DefaultTableModel ListarEstatisticas() {
+	
+		//DefaultTableModel [Nomear as colunas]
+		DefaultTableModel modelo = new DefaultTableModel();
+		modelo.addColumn("Nome");
+		modelo.addColumn("Pedido");
+		modelo.addColumn("Quantidade");
+		modelo.addColumn("Valor");
+		modelo.addColumn("Horario");
+		modelo.addColumn("Data");
+		
+		//Realizar o for int para adicionar todos os dados cadastrados
+		for(int indice = 0 ; indice < Pedidos.dados.size(); indice++) { 
+			if(filtragem.equals("Filtrar por")){
+			modelo.addRow(new Object[]  {
+					Pedidos.dados.get(indice).getNomePedido(),
+					Pedidos.dados.get(indice).getEscolhidoPedido(),
+					Pedidos.dados.get(indice).getQuantidadePedido(),
+					Pedidos.dados.get(indice).getSomaPedido(),
+					Pedidos.dados.get(indice).getDataTempo(),
+					Pedidos.dados.get(indice).getDataDias()
+			
+				});
+			}
+		}
+			
+		for(int indice = 0 ; indice < Pedidos.dados.size(); indice++) {
+			if(filtrado.equals("Nome") && filtragem.equals(Pedidos.dados.get(indice).getNomePedido().toString())){
+			modelo.addRow(new Object[]  {
+					Pedidos.dados.get(indice).getNomePedido(),
+					Pedidos.dados.get(indice).getEscolhidoPedido(),
+					Pedidos.dados.get(indice).getQuantidadePedido(),
+					Pedidos.dados.get(indice).getSomaPedido(),
+					Pedidos.dados.get(indice).getDataTempo(),
+					Pedidos.dados.get(indice).getDataDias()
+			});
+				}
+		}
+			
+		
+	
+		
+		
+		return modelo;
+	}
+
+
+
 	}
 
 
