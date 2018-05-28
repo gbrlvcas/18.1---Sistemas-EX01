@@ -165,7 +165,7 @@ public class LanchonetePedidos {
 //Componentes ===========================================================================================================
 		
 		//Background
-		JLabel BGPedidos = new JLabel(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\18.1 - Sistemas EX01\\src\\interfaceGrafica\\BGPrincipal.gif"));
+		JLabel BGPedidos = new JLabel(new ImageIcon(getClass().getResource("/BG.gif")));
 		BGPedidos.setBounds(0, 0, 480, 270);
 						
 		//Adicionando aos componentes

@@ -13,7 +13,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import codigo.Acao;
-import codigo.Produto;
 
 public class LanchoneteCadastrar {
 
@@ -146,7 +145,7 @@ public class LanchoneteCadastrar {
 //Adicionar aos componentes ===========================================================================================================
 		
 		//Background
-		JLabel BGCadastrar = new JLabel(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\18.1 - Sistemas EX01\\src\\interfaceGrafica\\BGPrincipal.gif"));
+		JLabel BGCadastrar = new JLabel(new ImageIcon(getClass().getResource("/BG.gif")));
 		BGCadastrar.setBounds(0, 0, 480, 270);
 						
 		//Adicionando aos componentes

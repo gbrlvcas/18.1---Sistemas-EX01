@@ -50,7 +50,7 @@ public class LanchoneteEstatisticas {
 		
 		//Barra de rolagem
 		JScrollPane barra = new JScrollPane(estatisticasPedidos);
-		barra.setBounds(0, 50, 460, 170);
+		barra.setBounds(0, 50, 460, 140);
 		
 		//Seleção JComboBox
 		
@@ -68,6 +68,11 @@ public class LanchoneteEstatisticas {
 				//Condicional e adicionar valores ao segundo comb
 			
 				switch(a.filtragem) {
+				
+				case "Filtrar por":
+					comboFiltrado.setSelectedIndex(-1);
+					
+				break;
 				
 				case "Nome":
 					for(Pedidos i: Pedidos.dados) {
@@ -88,29 +93,42 @@ public class LanchoneteEstatisticas {
 				break;
 				}
 	
-				//Seleção segundo JCombobox
-				comboFiltrado.addActionListener(new ActionListener() {
+		}
+		});
+		
+				//Botão para filtrar
+				JButton btnFiltrar = new JButton("Filtrar");
+				btnFiltrar.setBounds(330, 10, 100, 30);
+				btnFiltrar.setFont(new Font("Calibri", Font.BOLD, 16));
+				btnFiltrar.setBackground(Color.DARK_GRAY);
+				btnFiltrar.setForeground(Color.RED);
+				
+				//Função do botão
+				btnFiltrar.addActionListener(new ActionListener() {
 					
 					@Override
-					public void actionPerformed(ActionEvent arg0) {
+					public void actionPerformed(ActionEvent e) {
 						
-						//Capturando o valor selecionado na segunda Combobox
+						//Capturando o valor selecionado do combo filtrado
 						a.filtrado = comboFiltrado.getSelectedItem().toString();
 						
-						estatisticasPedidos.setModel(a.ListarEstatisticas());
+						//Instanciando a classe [Classe: Acao / Método: Listar Estatistica]
+						a.ListarEstatisticas();
+						
+						
 						
 					}
 				});
 		
-				
-			}
-		});
+		
+
+	
 		
 //Botões ================================================================================================================
 		
 		//Sair
 		JButton btnSair = new JButton("Sair");
-		btnSair.setBounds(350, 180, 70, 25);
+		btnSair.setBounds(370, 200, 70, 25);
 		btnSair.setFont(new Font("Calibri", Font.BOLD, 16));
 		btnSair.setBackground(Color.DARK_GRAY);
 		btnSair.setForeground(Color.RED);
@@ -134,7 +152,7 @@ public class LanchoneteEstatisticas {
 //Componentes ===========================================================================================================
 		
 		//Background
-		JLabel BGEstatisticas = new JLabel(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\18.1 - Sistemas EX01\\src\\interfaceGrafica\\BGPrincipal.gif"));
+		JLabel BGEstatisticas = new JLabel(new ImageIcon(getClass().getResource("/BG.gif")));
 		BGEstatisticas.setBounds(0, 0, 480, 270);
 						
 		//Adicionando aos componentes
@@ -147,6 +165,7 @@ public class LanchoneteEstatisticas {
 				
 				//Botões
 				cxEstatisticas.add(btnSair);
+				cxEstatisticas.add(btnFiltrar);
 						
 				//Background
 				cxEstatisticas.add(BGEstatisticas);

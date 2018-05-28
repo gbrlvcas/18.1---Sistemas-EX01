@@ -150,7 +150,7 @@ public class LanchonetePrincipal {
 //Adicionar os componentes ===========================================================================================================
 		
 		//Background
-		JLabel BGPrincipal = new JLabel(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\18.1 - Sistemas EX01\\src\\interfaceGrafica\\BGPrincipal.gif"));
+		JLabel BGPrincipal = new JLabel(new ImageIcon(getClass().getResource("/BG.gif")));
 		BGPrincipal.setBounds(0, 0, 480, 270);
 				
 		//Adicionando aos componentes

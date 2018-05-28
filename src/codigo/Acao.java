@@ -11,7 +11,7 @@ public class Acao {
 	public String mensagemErro = "";
 	public int codErro;
 	public String filtragem;
-	public String filtrado;
+	public static String filtrado;
 	
 	
 	//Método para Validar e Cadastrar
@@ -203,8 +203,11 @@ public class Acao {
 		modelo.addColumn("Data");
 		
 		//Realizar o for int para adicionar todos os dados cadastrados
+
 		for(int indice = 0 ; indice < Pedidos.dados.size(); indice++) { 
-			if(filtragem.equals("Filtrar por")){
+			
+			System.out.println("Filtrado "+filtrado);
+			
 			modelo.addRow(new Object[]  {
 					Pedidos.dados.get(indice).getNomePedido(),
 					Pedidos.dados.get(indice).getEscolhidoPedido(),
@@ -212,27 +215,16 @@ public class Acao {
 					Pedidos.dados.get(indice).getSomaPedido(),
 					Pedidos.dados.get(indice).getDataTempo(),
 					Pedidos.dados.get(indice).getDataDias()
+			
 			
 				});
-			}
-		}
-			
-		for(int indice = 0 ; indice < Pedidos.dados.size(); indice++) {
-			if(filtrado.equals("Nome") && filtragem.equals(Pedidos.dados.get(indice).getNomePedido().toString())){
-			modelo.addRow(new Object[]  {
-					Pedidos.dados.get(indice).getNomePedido(),
-					Pedidos.dados.get(indice).getEscolhidoPedido(),
-					Pedidos.dados.get(indice).getQuantidadePedido(),
-					Pedidos.dados.get(indice).getSomaPedido(),
-					Pedidos.dados.get(indice).getDataTempo(),
-					Pedidos.dados.get(indice).getDataDias()
-			});
-				}
-		}
-			
 		
+		
+			}
 	
 		
+			
+
 		
 		return modelo;
 	}

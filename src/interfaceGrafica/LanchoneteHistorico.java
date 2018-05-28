@@ -103,7 +103,7 @@ public class LanchoneteHistorico {
 //Componentes ===========================================================================================================
 		
 		//Background
-		JLabel BGHistorico = new JLabel(new ImageIcon("C:\\Users\\Gbrlvcas\\Desktop\\Programacao\\18.1 - Sistemas EX01\\src\\interfaceGrafica\\BGPrincipal.gif"));
+		JLabel BGHistorico = new JLabel(new ImageIcon(getClass().getResource("/BG.gif")));
 		BGHistorico.setBounds(0, 0, 480, 270);
 						
 		//Adicionando aos componentes
