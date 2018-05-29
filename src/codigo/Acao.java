@@ -11,7 +11,7 @@ public class Acao {
 	public String mensagemErro = "";
 	public int codErro;
 	public String filtragem;
-	public static String filtrado;
+	public String filtrado;
 	
 	
 	//Método para Validar e Cadastrar
@@ -170,6 +170,9 @@ public class Acao {
 		modelo.addColumn("Valor");
 		modelo.addColumn("Horario");
 		modelo.addColumn("Data");
+		
+		
+		//USAR AS DUAS VARIAVEIS FILTRADO E FILTRAGEM PARA PODER GERAR O TABLE LIST
 		
 		//Realizar o for int para adicionar todos os dados cadastrados
 		for (int indice = 0 ; indice < Pedidos.dados.size(); indice++) {

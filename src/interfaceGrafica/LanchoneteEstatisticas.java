@@ -45,7 +45,7 @@ public class LanchoneteEstatisticas {
 		Acao a = new Acao();
 		
 		//Tabela de estatisticas dos pedidos
-		JTable estatisticasPedidos = new JTable(a.ListarEstatisticas());
+		JTable estatisticasPedidos = new JTable();
 		a.filtragem = "Filtrar por";
 		
 		//Barra de rolagem
@@ -96,6 +96,7 @@ public class LanchoneteEstatisticas {
 		}
 		});
 		
+				
 				//Botão para filtrar
 				JButton btnFiltrar = new JButton("Filtrar");
 				btnFiltrar.setBounds(330, 10, 100, 30);
