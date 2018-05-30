@@ -208,6 +208,9 @@ public class Acao {
 		//Realizar o for int para adicionar todos os dados cadastrados
 
 		for(int indice = 0 ; indice < Pedidos.dados.size(); indice++) { 
+			if(filtragem.equals("Nome") && filtrado.equals(String.valueOf(Pedidos.dados.get(indice).getNomePedido()))){
+				
+			
 			
 			System.out.println("Filtrado "+filtrado);
 			
@@ -218,12 +221,13 @@ public class Acao {
 					Pedidos.dados.get(indice).getSomaPedido(),
 					Pedidos.dados.get(indice).getDataTempo(),
 					Pedidos.dados.get(indice).getDataDias()
+					
 			
 			
 				});
 		
-		
 			}
+		}
 	
 		
 			

@@ -78,6 +78,7 @@ public class LanchoneteEstatisticas {
 					for(Pedidos i: Pedidos.dados) {
 						comboFiltrado.addItem(i.getNomePedido());
 					}
+					
 				break;
 				
 				case "Produto":
